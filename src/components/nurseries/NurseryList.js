@@ -6,9 +6,10 @@ import { NurseryDistributorContext } from "./NuseryDistributorProvider";
 import { NurseryFlowerContext } from "./NurseryFlowerProvider"
 
 export default props => {
-  const { nurseries } = useContext(NurseryContext);
-  const { nurseryDistributors } = useContext(NurseryDistributorContext);
-  const { nurseryFlowers } = useContext(NurseryFlowerContext)
+
+  const { nurseries } = useContext(NurseryContext) || {}
+  const { nurseryDistributors } = useContext(NurseryDistributorContext) || {}
+  const { nurseryFlowers } = useContext(NurseryFlowerContext) || {}
 
   return (
     <div className="nurseries">
@@ -25,7 +26,7 @@ export default props => {
           return (
             <Nursery
               key={nursery.id}
-              Nursery={nursery}
+              nursery={nursery}
               Distributors={distributors}
               Flowers={flowers}
             />
